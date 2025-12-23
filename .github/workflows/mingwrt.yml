@@ -10,8 +10,8 @@ env:
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
-  DIY_P1_SH: DIY-1.sh
-  DIY_P2_SH: DIY-2.sh
+  DIY_P1_SH: diy-1.sh
+  DIY_P2_SH: diy-2.sh
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
@@ -153,7 +153,7 @@ jobs:
         echo "OpenWrt-Mini_ X86_64（支持ipv6）" >> release.txt
         echo "管理地址：192.168.2.1" >> release.txt
         echo "默认密码：无密码" >> release.txt
-        echo "插件清单：ShadowSocksR Plus+，PassWall，OpenClash" >> release.txt
+        echo "插件清单：SmartDNS，PassWall，UUgamebooster" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
 
     - name: 发布新版固件
@@ -162,7 +162,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
-        name: ${{ env.FILE_TIME }} -OpenWrt-6.12-合集版
+        name: ${{ env.FILE_TIME }} -OpenWrt-6.12-精简版
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/* 
